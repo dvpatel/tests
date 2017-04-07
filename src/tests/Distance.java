@@ -2,7 +2,7 @@ package tests;
 
 public class Distance {
 	public static void main(String...args) {
-		System.out.println("Levenshtein Distance:  :  " + ldist("kitten", "sitting"));
+		System.out.println("Levenshtein Distance:  :  " + ldist("bad", "sud"));
 	}
 	public static int ldist(String x, String y) {
 
@@ -38,6 +38,7 @@ public class Distance {
 
 		return d[x.length()-1][y.length()-1] ;
 	}
+	
 	public static void printDistance(int d[][], int i, int j) {
 		for (int ii = 0; ii <= i; ii++) {
 			for (int jj = 0; jj <= j; jj++) {

@@ -45,6 +45,7 @@ public class Graph {
 		nodes.add(n3) ;
 		return nodes ;
 	}
+	
 	public void bfs(Node root) {
 
 		ArrayList<Node> visited = new ArrayList<Node>() ;
@@ -65,6 +66,7 @@ public class Graph {
 			}
 		}
 	}
+	
 	public void dfs(Node root) {
 		ArrayList<Node> visited = new ArrayList<Node>() ;
 		Stack<Node> stack = new Stack<Node>() ;
@@ -82,13 +84,18 @@ public class Graph {
 			}
 		}
 	}
+	
 	public static class Node {
+		
 		public int value ;
+		
 		public ArrayList<Node> edges ;
+		
 		public Node(int value) {
 			this.value = value ;
 			this.edges = new ArrayList<Node>() ;
 		}
+		
 	}
 
 }
