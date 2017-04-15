@@ -8,7 +8,20 @@ package tests;
 public class Permutation {
 	
 	public static void main(String... args) {
-		char[] c = "abc".toCharArray() ;
+
+		String[] result = permutation("123") ;
+		
+		System.out.println("Permutations:  " + result.length) ;
+		for (String r : result) {
+			System.out.println(r);
+		}
+		
+	}
+	
+	public static String[] permutation(String inp) {
+		
+
+		char[] c = inp.toCharArray() ;
 
 		String[] result = null  ;
 		for (int i = 0; i < c.length; i++) {		
@@ -17,18 +30,16 @@ public class Permutation {
 				result = new String[1] ;
 				result[0] = String.valueOf(c[0]) ;
 			} else {			
-				result = permutation(c[i], result, i+1) ;
+				result = subPermutation(c[i], result, i+1) ;
 			}
 			
 		}
 		
-		System.out.println("Permutations:  " + result.length) ;
-		for (String r : result) {
-			System.out.println(r);
-		}
+		return result ;
+
 	}
 
-	public static String[] permutation(char c, String[] prev, int pos) {
+	public static String[] subPermutation(char c, String[] prev, int pos) {
 		
 		String[] result = new String[factorial(pos)] ;
 		int count = 0 ;
