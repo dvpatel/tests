@@ -12,9 +12,12 @@ public class TreeTest {
 		//int[] i = {40, 20, 60, 10, 30, 50, 70, 5, 55, 45} ;
 
 		//int[] i = {40, 20, 60, 10, 30, 50, 70, 5} ;
+		
+		//int[] i = {11, 6, 8, 19, 4, 10, 5, 17, 43, 49, 31} ;
 
         Tree tu = new Tree() ;
         TreeNode root = createTree();
+        
         
         
         //System.out.println(tu.getDepth(root, 0)) ;

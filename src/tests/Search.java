@@ -60,8 +60,8 @@ public class Search {
 		} else if (val > arr[m]) {
 			
 			//  search only right side ;
-			x = leftSideRange(arr, m+1, arr.length, val, x) ;
-			y = rightSideRange(arr, m, arr.length, val, x) ;
+			x = leftSideRange(arr, m+1, (m + (arr.length-m)/2), val, x) ;
+			y = rightSideRange(arr, x+1, arr.length, val, x) ;
 			
 		} else {
 			

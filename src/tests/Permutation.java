@@ -1,5 +1,7 @@
 package tests;
 
+import java.util.Hashtable;
+
 /*
  * Permutation example based on
  * Steinhaus Johnson Trotter algorithm
@@ -9,12 +11,18 @@ public class Permutation {
 	
 	public static void main(String... args) {
 
-		String[] result = permutation("123") ;
+		String[] result = permutation("iceman") ;
 		
 		System.out.println("Permutations:  " + result.length) ;
+		Hashtable<String, Boolean> h = new Hashtable<String, Boolean>() ;
 		for (String r : result) {
-			System.out.println(r);
+			//System.out.println(r); ;
+			h.put(r,  true) ;
 		}
+		
+		System.out.println("iceman anagram of cinema:  " + h.get("cinema"));
+		System.out.println("anemic anagram of cinema:  " + h.get("anemic"));
+		System.out.println("ce main anagram of cinema:  " + h.get("cemain"));
 		
 	}
 	
