@@ -5,78 +5,66 @@ import java.util.Arrays;
 public class MergeSort {
 
 	public static void main(String[] args) {
-
-		int[] inp = {45,23,11,89,77,98,4,28,65,43};
-
-		System.out.println(Arrays.toString(inp)) ;
-		Merge m = new Merge() ;
-		System.out.println(Arrays.toString(m.sort(inp))); ;
 		
+		int[] arr = {13, 4, 1, 5, 6, 22} ;
+		int x = 0 ;
+		int y = arr.length-1 ;
+		
+		System.out.println(Arrays.toString(arr));
+		sort(arr, x, y) ;		
+		System.out.println(Arrays.toString(arr));
+
 	}
 	
-	static private class Merge {
-		private int[] input ;
+	public static void sort(int[] arr, int x, int y) {
+		//  divide and conquer ;
 		
-		public int[] sort(int[] inp) {
-			
-			this.input = inp ;						
-			mergeSort(0, input.length-1) ;
-			return input ;
-			
-		}
-		
-		private void mergeSort(int i, int j) {
-			
-			//  already sorted ;
-			if (i == j) {
-				return ;
-			}
-			
-			if (i < j) {
-				int middle = i + (j-i)/2 ;
-				mergeSort(i, middle) ;
-				mergeSort(middle+1, j) ;				
-				merge(i, middle, j) ;
-			}
-			
-		}
+		if (x < y) {
 
-		private void merge(int start, int middle, int end) {
-
-			int[] r = new int[input.length] ;
-			for (int i = start; i <= end; i++ ) {
-				r[i] = input[i] ;
-			}
-
-			int i = start;
-			int j = middle+1 ;
-			int k = start ;
-									
-			while(i <= middle && j <= end) {
-				if (r[i] <= r[j]) {
-					this.input[k] = r[i] ;
-					i++ ;
-				} else {
-					this.input[k] = r[j] ;
-					j++ ;
-				}
-
-				k++ ;
-			}
+			int m = x + (y-x)/2 ;
 			
-			while(i <= middle) {
-				this.input[k] = r[i] ;
-				i++ ;
-				k++ ;
-			}
-
-			while(j <= end) {
-				this.input[k] = r[j] ;
-				j++ ;
-				k++ ;
-			}
+			//  sort left side ;  x, m
+			//  sort right side ; m+1, y
+			//  merge ;
 			
-		}
-
+			sort(arr, x, m) ;
+			sort(arr, m+1, y) ;
+			merge(arr, x, y, m) ;			
+		}		
 	}
+	
+	public static void merge(int[] arr, int x, int y, int m) {
+
+		int[] t = new int[arr.length] ;
+		for (int i = 0; i < arr.length; i++) {
+			t[i] = arr[i] ;
+		}
+
+		int i = x ;
+		int j = m+1 ;		
+		int k = x ;
+
+		//  a1 : [1, 3, 5]
+		//  b1 : [2, 4, 6]
+		//  compare and update array ;		
+		while (i <= m && j <= y) {
+			if (t[i] <= t[j]) {
+				arr[k++] = t[i++] ;
+			} else {
+				arr[k++] = t[j++] ;
+			}			
+		}
+		
+		while (i <= m) {
+			arr[k++] = t[i++] ;
+		}
+		
+		while (j <= y) {
+			arr[k++] = t[j++] ;
+		}
+		
+		// System.out.println("---" + Arrays.toString(arr)); ;		
+	}
+
+
 }
