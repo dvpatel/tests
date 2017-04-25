@@ -1,6 +1,7 @@
 package tests;
 
-import java.util.Hashtable;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ParenthesisPairs {
 
@@ -8,11 +9,10 @@ public class ParenthesisPairs {
 		char[] arr = {'(', ')', '(', ')', '(', ')'} ;
 		int len = arr.length ;
 		gen(arr, len) ;
-		for (String s : results.keySet()) {
+		for (String s : results) {
 			System.out.println(s);
 		}
 	}
-
 	
 	public static boolean isValid(char[] arr) {
 		int i = 0 ;
@@ -27,20 +27,13 @@ public class ParenthesisPairs {
 		return true ;
 	}
 
-	static Hashtable<String, Integer> results = new Hashtable<String, Integer>() ;
+	static Set<String> results = new HashSet<String>() ;
 	public static void gen(char[] arr, int n) {		
 		if (n == 1) {
 			String k = new String(arr) ;
 			if (!results.contains(k) && isValid(arr)) {
-				//System.out.println(k);
-				
-				Integer r = results.get(k) ;
-				if (r == null) {
-					results.put(k, 1) ;
-				} else {
-					results.remove(k) ;
-					results.put(k, r+1) ;
-				}				
+				//System.out.println(k);				
+				results.add(k) ;
 			} else {
 				//  System.out.println("Failed:  " + new String(arr));	
 			}
