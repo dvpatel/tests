@@ -1,18 +1,17 @@
 package tests;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Stack;
-import java.util.TreeMap;
 
 public class Tree {
 
 	private boolean isTempSet = false ;
 	private int temp ;
 	private boolean isBST = true ;
-
+	
+	public static int counter ;
 
 	/**
 	 * Create TreeNode given input array
@@ -592,29 +591,27 @@ public class Tree {
 	 * Find lowest common ancestory between 2 nodes, a and b ;
 	 */
 	public TreeNode findLCA(TreeNode root, TreeNode a, TreeNode b) {
-
-		System.out.println("Root: " + root);
+		
+		counter++ ;
 		
 		if (root == null) {	
 			return null ;
 		}
 		
-		if (root.value == a.value || root.value == b.value) {		
-			return root ;
-		}
-
-		TreeNode left = findLCA(root.left, a, b) ;		
-		TreeNode right = findLCA(root.right, a, b) ;
-
-		System.out.println("Left:  " + left); ;
-		System.out.println("Right:  " + right); ;
-				
-		if (left != null && right != null) {
+		int lval = a.value ;
+		int rval = b.value ;
+		int rootVal = root.value ;
+		
+		if (lval < rootVal && rval < rootVal) {
+			//  go left ;
+			return findLCA(root.left, a, b) ;
+		} else if (lval > rootVal && rval > rootVal) {
+			return findLCA(root.right, a, b) ;			
+		} else if (lval < rootVal && rootVal < rval){
 			return root ;
 		}
 		
-		return (left != null) ? left : right ;
-
+		return null ;
 	}
 	
 	/**

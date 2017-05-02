@@ -51,7 +51,7 @@ public class TreeTest {
 
         System.out.println("-------------- ");
 
-        System.out.println("LCA(20,60):  " + tu.findLCA(root,  new TreeNode(20),  new TreeNode(60)).value)  ;
+        System.out.println("LCA(5, 30):  " + tu.findLCA(root,  new TreeNode(5),  new TreeNode(30)).value + ", Counter:  " + tu.counter)  ;
 
 	}
 
@@ -69,42 +69,18 @@ public class TreeTest {
     	t20.left = t10 ;
     	t20.right = t30 ;
     	
-    	//TreeNode t50 = new TreeNode(50) ;
-    	//TreeNode t70 = new TreeNode(70) ;
+    	TreeNode t50 = new TreeNode(50) ;
+    	TreeNode t70 = new TreeNode(70) ;
 
-    	//t60.left = t50 ;
-    	//t60.right = t70 ;
-    	
+    	t60.left = t50 ;
+    	t60.right = t70 ;    	
     	
     	TreeNode t5 = new TreeNode(5) ;
     	TreeNode t55 = new TreeNode(55) ;
-    	TreeNode t65 = new TreeNode(65) ;
     	
     	t10.left = t5 ;
-    	//t50.right = t55 ;
-    	//t70.left = t65 ;
-    	
-
-    	
-    	TreeNode t4 = new TreeNode(4) ;
-    	t5.left = t4 ;
-    	
-    	TreeNode t29 = new TreeNode(29) ;
-    	TreeNode t28 = new TreeNode(28) ;
-    	TreeNode t27 = new TreeNode(27) ;
-    	TreeNode t26 = new TreeNode(26) ;
-    	TreeNode t25 = new TreeNode(25) ;
-    	TreeNode t24 = new TreeNode(24) ;
-
-    	
-    	t30.left = t29 ;
-    	t29.left = t28 ;
-    	t28.left = t27 ;
-    	t27.left = t26 ;
-    	t26.left = t25 ;
-    	t25.left = t24 ;
-
-    	
+    	t50.right = t55 ;
+    	    	
         return t40;
     }
 	
