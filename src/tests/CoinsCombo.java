@@ -10,7 +10,7 @@ import java.util.Set;
 public class CoinsCombo {
 	
 	public static void main(String[] args) {
-		int i = 16 ;
+		int i = 99 ;
 		
 		Coins[] c = new Coins[4] ;
 		
