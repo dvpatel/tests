@@ -4,6 +4,7 @@ public class Distance {
 	public static void main(String...args) {
 		System.out.println("Levenshtein Distance:  :  " + ldist("bad", "sud"));
 	}
+	
 	public static int ldist(String x, String y) {
 
 		x = "0" + x;
