@@ -1,64 +1,47 @@
-package tests ;
+package tests;
 
+/**
+ * Example to print Nth Fibonacci odd, even, all numbers 
+ * @author Dipesh
+ */
 public class Fibonacci {
 
-	public static void main(String[] args) {		
-		for (int i = 0; i < 8; i++) {
-			//System.out.print(generate(i) + " ");
-			System.out.print(gen(0, i, 0, 0) + " ");
-		}		
+	public static void main(String[] args) {
+		int max = 50;
+		fib(0, max, 0, 0, Num.EVEN);
 	}
-	
-	/**
-	 * recursive operation to calculate "n" fib value
-	 * @param m,  starting index
-	 * @param n,  nth fib position
-	 * @param p,  previous position value
-	 * @param pp, previous, previous position value
-	 * @return
-	 */
-	public static int generate(int n) {
-		int p = 0 ;
-		int pp = 0 ;
-		int r = 0 ;
-		for (int i = 0; i < n; i++) {
-			// n:  0 1 2 3 4 5 6 7 8
-			// v:  0 1 1 2 3 5 8 13
 
-			if (i == 0) {
-				p = 1 ;
-				pp = 0 ;
-			}
-
-			r = p + pp ;			
-			if (i > 0) {
-				pp = p ;
-				p = r ;		
-			}
-		}
-		
-		return r ;
+	public enum Num {
+		ODD, EVEN, ALL;
 	}
-	
-	public static int gen(int i, int n, int p, int pp) {
-				
-		if (n == 0) {
-			return 0 ;
+
+	public static void fib(long i, long max, long p, long pp, Num n) {
+
+		// 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
+		if (i < max) {
+
+			long r = (i == 1) ? 1 : p + pp;
+
+			switch (n) {
+			
+			case ALL:
+				// print all numbers ;
+				System.out.print(" " + r);
+				fib(++i, max, r, p, Num.ALL);
+
+			case EVEN:
+				if (r % 2 == 0)
+					System.out.println("N:  " + i + ", Val:  " + r);
+
+				fib(++i, max, r, p, Num.EVEN);
+
+			case ODD:
+				if (r % 2 == 1)
+					System.out.println("N:  " + i + ", Val:  " + r);
+
+				fib(++i, max, r, p, Num.ODD);
+			}
 		}
-		
-		if (n == 1) {
-			return 1 ;
-		}
-		
-		if (i == 2) {
-			p = 1 ;
-			pp = 0 ;
-		}
-		
-		if (i < n) {
-			return gen(++i, n, p+pp, p) ;			
-		}
-		
-		return p+pp ;
+
 	}
 }
