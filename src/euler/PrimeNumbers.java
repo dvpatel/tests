@@ -1,9 +1,10 @@
-package tests;
+package euler;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /*
+ * Euler 3
  * Sample based on Sieve of Eratosthenes algorithm.
  * For number 1 - 10000, find all the prime numbers
  * while maximizing space and time.
@@ -14,7 +15,7 @@ public class PrimeNumbers {
 
 	public static void main(String[] args) {
 		
-		int size = 10000;
+		int size = 100000;
 		long s = System.currentTimeMillis();		
 		List<Integer> p = primeNumbers(size);
 		long end = System.currentTimeMillis();
@@ -23,6 +24,15 @@ public class PrimeNumbers {
 		
 		System.out.println("----------------------------------------------------");
 		
+		int[] f = p.stream().mapToInt(i->i).toArray() ;
+		List<Long> out = new ArrayList<Long>();
+		boolean result = primeFactorTest(600851475143l, f, 0, out);			
+		if (result) {
+			System.out.println("Value:  " + 600851475143l + ", Factors:  " + out);
+		}
+
+		
+		/*
 		int[] f = { 3, 5, 7 };
 		
 		for (int i = 1; i < size; i++) {
@@ -34,13 +44,13 @@ public class PrimeNumbers {
 				System.out.println("Value:  " + i + ", Factors:  " + out);
 			}
 			
-		}
+		}*/
 	}
 
 	/*
 	 * tests number n if a factor of 3, 5, 7
 	 */
-	public static boolean primeFactorTest(int n, int[] factors, int indx, List<Integer> out) {
+	public static boolean primeFactorTest(long n, int[] factors, int indx, List<Long> out) {
 		
 		counter++;
 		// if n is a prime and > 7, then return false
@@ -56,13 +66,13 @@ public class PrimeNumbers {
 			}
 		}
 		
-		int r = n / factors[indx];
-		int re = n % factors[indx];
+		long r = n / factors[indx];
+		long re = n % factors[indx];
 		if (re != 0) {
 			// try next one
 			return primeFactorTest(n, factors, ++indx, out);
 		} else {
-			out.add(factors[indx]);
+			out.add((long) factors[indx]);
 			return primeFactorTest(r, factors, indx, out);
 		}
 
