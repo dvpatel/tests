@@ -1,2 +1,2 @@
 # tests
-Java Samples
+Code samples
